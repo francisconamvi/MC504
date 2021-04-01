@@ -1,0 +1,3 @@
+gcc -o main_c.so -shared -fPIC main.c
+python3 main.py < input.txt
+python3 gifmake.py < input.txt
