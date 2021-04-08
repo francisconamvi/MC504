@@ -1,3 +1,5 @@
-gcc -o main_c.so -shared -fPIC -pthread main.c
-python3 main.py < input.txt
-python3 gifmake.py < input.txt
+gcc -o src/main_c.so -shared -fPIC -pthread -w src/main.c
+mkdir img
+mkdir movie
+python3 src/main.py < input/input.txt
+python3 src/gifmake.py < input/input.txt
