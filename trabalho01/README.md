@@ -16,9 +16,13 @@ Este último diretório possui um *main* em *python*, um *main* em *c* e um últ
 
 ## Instruções de uso
 Para rodar o programa completo basta rodar o comando:
+
  ``bash run``
+ 
 Porém se não desejar ver a interface gráfica e sim apenas o programa C rodando em seu terminal, basta rodar o comando:
+
 ``gcc src/main.c -pthread -w -o src/main``
+
 ``./src/main < input/input.txt``
 
 ## Estratégia Multithread adotada
