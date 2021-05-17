@@ -4,6 +4,10 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#include <ncurses.h>
+#include "ginterface.cpp"
+using namespace std;
+
 #define n_clientes 10
 #define n_pintores 3
 #define n_cadeiras 5
@@ -31,7 +35,7 @@ void *f_pintor(void *v){
         sem_post(&sem_le_sinal);
         sem_wait(&sem_cliente_cadeira[id]);
         //?????????? função Hitalo ?????????????????
-        printf("Pintor %d acabou a pintura.\n", id);
+        // printf("Pintor %d acabou a pintura.\n", id);
         sem_post(&sem_pintura_finalizada[id]);
         sleep(random()%3);
     }
@@ -44,39 +48,49 @@ void *f_cliente(void *v){
 
     sleep(random()%3);
     if(sem_trywait(&sem_cadeiras) == 0){
-        printf("Cliente %d entrou na galeria.\n", client->id);
+        // printf("Cliente %d entrou na galeria.\n", client->id);
+        
         sem_wait(&sem_le_sinal);
         cadeira = sinal;
         sem_post(&sem_escreve_sinal);
         sem_wait(&sem_cad_pintores[cadeira]);
-        printf("Cliente %d pediu uma arte de tamanho %d x %d\n", client->id, client->x, client->y);
+        // printf("Cliente %d pediu uma arte de tamanho %d x %d\n", client->id, client->x, client->y);
         sem_post(&sem_cliente_cadeira[cadeira]);
+        printf("%d\n", sem_cadeiras);
         sem_post(&sem_cadeiras);
+        printf("%d\n", sem_cadeiras);
+        // mvprintw(pao, 1, "%d", sem_cadeiras);
+        // refresh();
         sem_wait(&sem_pintura_finalizada[cadeira]);
         sem_post(&sem_cad_pintores[cadeira]);
-        printf("Cliente %d deixou o atelie.\n", client->id);
+        // printf("Cliente %d deixou o atelie.\n", client->id);
 
 
     } else
-        printf("Galeria estava fechada para o cliente %d\n", client->id);
+        int lixo=0;
+        // printf("Galeria estava fechada para o cliente %d\n", client->id);
     return NULL;
 }
-
-
 
 int main(){
     pthread_t thr_clientes[n_clientes], thr_pintores[n_pintores];
     int i, id_pintores[n_pintores];
     struct cliente clientes[n_clientes];
+
+    // initscr();
+    // init();
     
     for(i=0; i < n_clientes; i++){
-        scanf("%d %d", &clientes[i].x, &clientes[i].y);
+        clientes[i].x = random()%10;
+        clientes[i].y = random()%10;
     }
     
     sem_init(&sem_cadeiras, 0, n_cadeiras);
     sem_init(&sem_escreve_sinal, 0, 1);
     sem_init(&sem_le_sinal, 0, 0);
-    
+    // refresh();
+
+
     for (i = 0; i < n_pintores; i++) {
         sem_init(&sem_cad_pintores[i], 0, 1);
         sem_init(&sem_cliente_cadeira[i], 0, 0);
@@ -96,6 +110,7 @@ int main(){
     for (i = 0; i < n_clientes; i++) 
         pthread_join(thr_clientes[i], NULL);
     
+    // endwin();
     
     return 0;
 }
