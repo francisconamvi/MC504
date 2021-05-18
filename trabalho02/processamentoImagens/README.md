@@ -2,4 +2,6 @@ Para a execução do código é necessario a biblioteca OpenCV instalada. Para c
 
 - g++ main.cpp img.cpp -pthread -lX11 -o output1 \`pkg-config --cflags --libs opencv\`
 
+![Exemplo processamento imagens](../exemplos/imagProccess504.gif)
+
 
