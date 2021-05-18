@@ -9,6 +9,8 @@ Projeto 2 - MC504: Sistemas Operacionais
 
 ![Exemplo 1](./exemplos/MC504a.gif)
 ![Exemplo 2](./exemplos/MC504b.gif)
+![Exemplo 3](./exemplos/imagProccess504.gif)
+
 
 ## Visão Geral
 O projeto visa simular um ateliê de pintores que realizam diferentes tipos de manipulações com imagens. O exemplo dos barbeiros dorminhocos foi utilizado como base de inspiração, mas os parâmetros e as exigências do projeto são distintos. Cada pintor possui uma especialidade de alteração de imagem e cada cliente possui uma necessidade distinta. No entanto, o ateliê só possui uma fila em que a capacidade máxima dessa fila deve ser respeitada.
