@@ -1,5 +1,13 @@
 /*
  * Problema do pintor dorminhoco com vários pintores especializados.
+  
+  Grupo:
+- Francisco Namias Vicente - 216028
+- Gustavo Praciano Barros - 217555
+- Hitalo Cesar Alves - 217878
+- Luiz Felipe Eiske Kina - 183020
+
+
  */ 
 #include <pthread.h>
 #include <semaphore.h>
