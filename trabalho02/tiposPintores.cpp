@@ -75,7 +75,7 @@ int ite=0;
 
 void printAtelie(){
   refresh();
-  int myY=1, myX=1;
+  int myY=1, myX=1; 
   mvprintw(2, 30, "Bem vindo ao Atelie!!!");
 
   mvprintw(4, 3, "Entrada");
